@@ -1,12 +1,11 @@
 # Variables
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = phonebook
+NAME = G.B.U._Account
 
 # Sources et objets
-SRC = Contact.cpp \
-	  Phonebook.cpp \
-	  main.cpp
+SRC = Account.cpp \
+	  tests.cpp
 
 # Règle par défaut
 all: $(NAME)
