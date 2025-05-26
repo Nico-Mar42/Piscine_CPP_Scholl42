@@ -59,6 +59,8 @@
 		"typeinfo": "cpp",
 		"semaphore": "cpp",
 		"__nullptr": "cpp",
-		"iomanip": "cpp"
+		"iomanip": "cpp",
+		"fstream": "cpp",
+		"codecvt": "cpp"
 	}
 }
