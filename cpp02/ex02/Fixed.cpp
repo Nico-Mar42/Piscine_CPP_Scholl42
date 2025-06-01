@@ -4,31 +4,26 @@ const int Fixed::bits_nbr = 8;
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
 	this->_nbr = 0;
 }
 
 Fixed::Fixed(int const nbr)
 {
-	std::cout << "Int constructor called" << std::endl;
 	this->_nbr = nbr << bits_nbr;
 }
 
 Fixed::Fixed(float const nbr_f)
 {
-	std::cout << "Float constructor called" << std::endl;
 	this->_nbr = roundf(nbr_f * (1 << bits_nbr));
 }
 
 Fixed::Fixed(const Fixed& other)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->_nbr = other.getRawBits();
@@ -38,7 +33,6 @@ Fixed& Fixed::operator=(const Fixed& other)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits(void) const
@@ -65,4 +59,112 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
 {
     os << fixed.toFloat();
     return os;
+}
+
+bool Fixed::operator>(const Fixed& other) const {
+	return this->_nbr > other._nbr;
+}
+
+bool Fixed::operator<(const Fixed& other) const {
+	return this->_nbr < other._nbr;
+}
+
+bool Fixed::operator>=(const Fixed& other) const {
+	return this->_nbr >= other._nbr;
+}
+
+bool Fixed::operator<=(const Fixed& other) const {
+	return this->_nbr <= other._nbr;
+}
+
+bool Fixed::operator==(const Fixed& other) const {
+	return this->_nbr == other._nbr;
+}
+
+bool Fixed::operator!=(const Fixed& other) const {
+	return this->_nbr != other._nbr;
+}
+
+Fixed Fixed::operator+(const Fixed& other) const {
+	Fixed result;
+	result.setRawBits(this->_nbr + other.getRawBits());
+	return result;
+}
+
+Fixed Fixed::operator-(const Fixed& other) const {
+	Fixed result;
+	result.setRawBits(this->_nbr - other.getRawBits());
+	return result;
+}
+
+Fixed Fixed::operator*(const Fixed& other) const {
+	Fixed result;
+	long tmp = static_cast<long>(this->_nbr) * static_cast<long>(other._nbr);
+	result.setRawBits(static_cast<int>(tmp >> bits_nbr));
+	return result;
+}
+
+Fixed Fixed::operator/(const Fixed& other) const {
+	Fixed result;
+	if (other._nbr == 0) {
+		std::cerr << "Error: Division by zero" << std::endl;
+		return result;
+	}
+	long tmp = (static_cast<long>(this->_nbr) << bits_nbr) / other._nbr;
+	result.setRawBits(static_cast<int>(tmp));
+	return result;
+}
+
+Fixed& Fixed::operator++() {
+	this->_nbr++;
+	return *this;
+}
+
+Fixed Fixed::operator++(int) {
+	Fixed tmp(*this);
+	this->_nbr++;
+	return tmp;
+}
+
+Fixed& Fixed::operator--() {
+	this->_nbr--;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed tmp(*this);
+	this->_nbr--;
+	return tmp;
+}
+
+Fixed const &Fixed::min(Fixed const &a, Fixed const &b)
+{
+	if (a < b)
+		return(a);
+	else
+		return(b);
+}
+
+Fixed const &Fixed::max(Fixed const &a, Fixed const &b)
+{
+	if (a > b)
+		return(a);
+	else
+		return(b);
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a < b)
+		return(a);
+	else
+		return(b);
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a > b)
+		return(a);
+	else
+		return(b);
 }
