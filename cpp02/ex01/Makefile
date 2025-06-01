@@ -1,7 +1,7 @@
 # Variables
 CC = c++
 CFLAGS =  -g -Wall -Wextra -Werror -std=c++98
-NAME = First_canon
+NAME = utils_class
 
 # Sources et objets
 SRC = main.cpp Fixed.cpp
