@@ -1,6 +1,11 @@
 #include "Fixed.hpp"
 
+// Static constant
 const int Fixed::bits_nbr = 8;
+
+// =========================
+// Constructors / Destructor
+// =========================
 
 Fixed::Fixed()
 {
@@ -22,6 +27,14 @@ Fixed::Fixed(const Fixed& other)
 	*this = other;
 }
 
+Fixed::~Fixed()
+{
+}
+
+// =========================
+// Assignment operators
+// =========================
+
 Fixed& Fixed::operator=(const Fixed& other)
 {
 	if (this != &other)
@@ -31,9 +44,9 @@ Fixed& Fixed::operator=(const Fixed& other)
 	return (*this);
 }
 
-Fixed::~Fixed()
-{
-}
+// =========================
+// Accessors
+// =========================
 
 int Fixed::getRawBits(void) const
 {
@@ -45,6 +58,10 @@ void Fixed::setRawBits(int const raw)
 	this->_nbr = raw;
 }
 
+// =========================
+// Conversion
+// =========================
+
 float Fixed::toFloat( void ) const
 {
 	return (static_cast<float>(this->_nbr) / (1 << bits_nbr));
@@ -55,11 +72,19 @@ int Fixed::toInt( void ) const
 	return( static_cast <float> (this->_nbr >> bits_nbr));
 }
 
+// =========================
+// Operator << overload
+// =========================
+
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
 {
-    os << fixed.toFloat();
-    return os;
+	os << fixed.toFloat();
+	return os;
 }
+
+// =========================
+// Comparison operators
+// =========================
 
 bool Fixed::operator>(const Fixed& other) const {
 	return this->_nbr > other._nbr;
@@ -84,6 +109,10 @@ bool Fixed::operator==(const Fixed& other) const {
 bool Fixed::operator!=(const Fixed& other) const {
 	return this->_nbr != other._nbr;
 }
+
+// =========================
+// Arithmetic operators
+// =========================
 
 Fixed Fixed::operator+(const Fixed& other) const {
 	Fixed result;
@@ -115,6 +144,10 @@ Fixed Fixed::operator/(const Fixed& other) const {
 	return result;
 }
 
+// =========================
+// Increment/Decrement operators
+// =========================
+
 Fixed& Fixed::operator++() {
 	this->_nbr++;
 	return *this;
@@ -136,6 +169,10 @@ Fixed Fixed::operator--(int) {
 	this->_nbr--;
 	return tmp;
 }
+
+// =========================
+// Min/Max functions
+// =========================
 
 Fixed const &Fixed::min(Fixed const &a, Fixed const &b)
 {
