@@ -4,7 +4,7 @@ CFLAGS =  -g -Wall -Wextra -Werror -std=c++98
 NAME = utils_class
 
 # Sources et objets
-SRC = main.cpp Fixed.cpp
+SRC = main.cpp Fixed.cpp bsp.cpp Point.cpp \
 
 # Règle par défaut
 all: $(NAME)

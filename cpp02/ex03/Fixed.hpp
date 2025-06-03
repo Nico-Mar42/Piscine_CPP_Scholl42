@@ -7,7 +7,6 @@
 # include <fstream>
 # include <sstream>
 # include <cmath>
-
 class Fixed
 {
 public:
