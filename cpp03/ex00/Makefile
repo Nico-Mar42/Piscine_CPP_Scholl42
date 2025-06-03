@@ -1,7 +1,7 @@
 # Variables
 CC = c++
 CFLAGS =  -g -Wall -Wextra -Werror -std=c++98
-NAME = First_canon
+NAME = First_clapTrap
 
 # Sources et objets
 SRC = main.cpp ClapTrap.cpp

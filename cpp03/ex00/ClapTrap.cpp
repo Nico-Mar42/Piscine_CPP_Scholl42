@@ -3,13 +3,26 @@
 ClapTrap::ClapTrap()
 {
 	std::cout << "\033[32m" << "New challenger is comming, claptrap ";
-	std::cout << this->_name << "is ready to fight" << "\033[0m" << std::endl;
 	
 	this->_name = "Default";
+	std::cout << this->_name << "is ready to fight" << "\033[0m" << std::endl;
+
 	this->_hitPoints = 10;
 	this->_energyPoints = 10;
 	this->_attackDamage = 0;
 }
+ClapTrap::ClapTrap(std::string name)
+{
+	std::cout << "\033[32m" << "New challenger is comming, claptrap ";
+
+	this->_name = name;
+	std::cout << this->_name << " is ready to fight" << "\033[0m" << std::endl;
+
+	this->_hitPoints = 10;
+	this->_energyPoints = 10;
+	this->_attackDamage = 0;
+}
+
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
 	std::cout << "\033[32m" << "New challenger is comming, claptrap ";
@@ -39,20 +52,20 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (this->_hitPoints > 0)
+	if (this->_hitPoints == 0)
 	{
 		std::cout << "\033[31m" << "ClapTrap is K.O. — attacking is impossible." << "\033[0m" << std::endl;
 		return ;
 	}
-	else if (this->_energyPoints)
+	else if (this->_energyPoints == 0)
 	{
 		std::cout << "\033[31m" << "ClapTrap has no more energy — attacking is impossible." << "\033[0m" << std::endl;
 		return ;
 	}
 	this->_energyPoints--;
 	std::cout << "\033[33m" << "ClapTrap " << this->_name;
-	std::cout << " attack" << target << "\033[0m";
-	std::cout << "The attack inflicts " << this->_attackDamage << " damage points." << "\033[0m" << std::endl;
+	std::cout << " attack " << target << " the attack inflicts ";
+	std::cout << this->_attackDamage << " damage points." << "\033[0m" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -84,8 +97,10 @@ void ClapTrap::beRepaired(unsigned int amount)
 		if (this->_hitPoints == 10)
 			std::cout << "\033[34m" << "claptrap " << this->_name << " is fully repaired" << "\033[32m" << std::endl;
 		else
+		{
 			std::cout << "\033[34m" << "claptrap " << this->_name << " now has ";
 			std::cout << this->_hitPoints << " hit Points" << "\033[32m" << std::endl;
+		}
 	}
 
 }
