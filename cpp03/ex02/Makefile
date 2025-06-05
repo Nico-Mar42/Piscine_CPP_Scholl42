@@ -1,10 +1,10 @@
 # Variables
 CC = c++
 CFLAGS =  -g -Wall -Wextra -Werror -std=c++98
-NAME = ScavTrap
+NAME = FragTrap
 
 # Sources et objets
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 # Règle par défaut
 all: $(NAME)

@@ -1,10 +1,12 @@
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"`
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
 	ClapTrap claptrap("Clappy");
 	ScavTrap scavtrap("Scavvy");
+	FragTrap fragtrap("Fraggy");
 
 	// Test ClapTrap functions
 	claptrap.attack("target1");
@@ -26,6 +28,16 @@ int main()
 	scavtrap.attack("target3"); // Should not attack (no HP)
 	scavtrap.guardGate(); // Should not guard (no HP)
 	scavtrap.beRepaired(10); // Should not repair (no HP)
+
+	// Test FragTrap functions
+	fragtrap.attack("target4");
+	fragtrap.beRepaired(7);
+	fragtrap.takeDamage(10);
+	fragtrap.highFivesGuys(); // Specific to FragTrap
+	fragtrap.takeDamage(90); // Should deplete hit points
+	fragtrap.attack("target5"); // Should not attack (no HP)
+	fragtrap.highFivesGuys(); // Should not high five (no HP)
+	fragtrap.beRepaired(15); // Should not repair (no HP)
 
 	return 0;
 }
