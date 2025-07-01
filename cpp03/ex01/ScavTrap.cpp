@@ -19,16 +19,16 @@ void ScavTrap::attack(const std::string& target)
 
 	if (_hitPoints == 0)
 	{
-		std::cout << "\033[31m" << "ScavTrap is K.O. — attacking is impossible." << "\033[0m" << std::endl;
+		std::cout << "\033[31m" << "test  ScavTrap is K.O. — attacking is impossible." << "\033[0m" << std::endl;
 		return ;
 	}
 	else if (_energyPoints == 0)
 	{
-		std::cout << "\033[31m" << "ScavTrap has no more energy — attacking is impossible." << "\033[0m" << std::endl;
+		std::cout << "\033[31m" << "test ScavTrap has no more energy — attacking is impossible." << "\033[0m" << std::endl;
 		return ;
 	}
 	_energyPoints--;
-	std::cout << "\033[33m" << "ScavTrap " << _name;
+	std::cout << "\033[33m" << "test ScavTrap " << _name;
 	std::cout << " attack " << target << " the attack inflicts ";
 	std::cout << _attackDamage << " damage points." << "\033[0m" << std::endl;
 }
