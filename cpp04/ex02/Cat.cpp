@@ -13,9 +13,6 @@ Cat::Cat(const Cat &other) : Animal(other)
 	std::cout << "Cat copy constructor called" << std::endl;
 	this->type = other.type;
 	brain = new Brain(*other.brain);
-	if (!brain) {
-		std::cerr << "Failed to allocate memory for brain in Cat copy constructor" << std::endl;
-	}
 }
 
 Cat Cat::operator=(const Cat &other) 
@@ -28,9 +25,6 @@ if (this != &other) {
 			delete brain;
 		}
 		brain = new Brain(*other.brain);
-		if (!brain) {
-			std::cerr << "Failed to allocate memory for brain in Cat assignment operator" << std::endl;
-		}
 	}
 	return *this;
 }

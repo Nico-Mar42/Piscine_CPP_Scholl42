@@ -32,7 +32,7 @@ Cure::~Cure()
 
 Cure *Cure::clone() const 
 {
-	//std::cout << "Cure clone called" << std::endl;
+	std::cout << "\'* Cure clone called *\'" << std::endl;
 	return new Cure(*this);
 }
 

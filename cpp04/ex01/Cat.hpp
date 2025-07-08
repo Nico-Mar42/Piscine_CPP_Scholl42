@@ -14,8 +14,20 @@ class Cat : virtual public Animal {
 		Cat operator=(const Cat &other);
 		void makeSound() const;
 		virtual ~Cat();
-		std::string getidea();
 
+		std::string getfirstidea();
+		void setidea(const std::string &idea);
+		void setIdeaAtIndex(int index, const std::string &idea);
+		std::string getIdeaAtIndex(int index) const;
+		std::string* getAllIdeas();
+		void printIdeas() const;
+		void clearIdeas();
+		int getNumberOfIdeas() const;
+		bool ideaExistsAtIndex(int index) const;
+		bool isEmpty() const;
+		int getMaxIdeas() const;
+		
+		
 	private:
 		Brain* brain;
 

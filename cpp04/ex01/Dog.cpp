@@ -12,9 +12,6 @@ Dog::Dog(const Dog &other) : Animal(other)
 {
 	this->type = other.type;
 	brain = new Brain(*other.brain);
-	if (!brain) {
-		std::cerr << "Failed to allocate memory for brain in Dog copy constructor" << std::endl;
-	}
 	std::cout << "Dog copy constructor called" << std::endl;
 }
 
@@ -27,9 +24,6 @@ Dog Dog::operator=(const Dog &other)
 			delete brain;
 		}
 		brain = new Brain(*other.brain);
-		if (!brain) {
-			std::cerr << "Failed to allocate memory for brain in Dog assignment operator" << std::endl;
-		}
 	}
 	std::cout << "Dog assignment operator called" << std::endl;
 	return *this;
@@ -44,4 +38,59 @@ Dog::~Dog()
 void Dog::makeSound() const 
 {
 	std::cout << "Woof!" << std::endl;
+}
+
+std::string Dog::getfirstidea()
+{
+	return (this->brain->getfirstidea());
+}
+
+void Dog::setidea(const std::string &idea)
+{
+	this->brain->setidea(idea);
+}
+
+void Dog::setIdeaAtIndex(int index, const std::string &idea)
+{
+	this->brain->setIdeaAtIndex(index, idea);
+}
+
+std::string Dog::getIdeaAtIndex(int index) const
+{
+	return this->brain->getIdeaAtIndex(index);
+}
+
+std::string* Dog::getAllIdeas()
+{
+	return this->brain->getAllIdeas();
+}
+
+void Dog::printIdeas() const
+{
+	this->brain->printIdeas();
+}
+
+void Dog::clearIdeas()
+{
+	this->brain->clearIdeas();
+}
+
+int Dog::getNumberOfIdeas() const
+{
+	return this->brain->getNumberOfIdeas();
+}
+
+bool Dog::ideaExistsAtIndex(int index) const
+{
+	return this->brain->ideaExistsAtIndex(index);
+}
+
+bool Dog::isEmpty() const
+{
+	return this->brain->isEmpty();
+}
+
+int Dog::getMaxIdeas() const
+{
+	return this->brain->getMaxIdeas();
 }

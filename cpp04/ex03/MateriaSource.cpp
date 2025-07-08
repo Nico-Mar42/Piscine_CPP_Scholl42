@@ -56,10 +56,13 @@ void MateriaSource::learnMateria(AMateria* m)
 	{
 		if (this->_Memory[i] == NULL)
 		{	
+			std::cout << "\'* " << m->getType() << " Materia learned in slot " << i << " *\'" << std::endl;
 			this->_Memory[i] = m;
 			return;
 		}
 	}
+	std::cout << "\'* Memory is full, cannot learn " << m->getType() << " Materia *\'" << std::endl;
+	return;
 }
 
 AMateria* MateriaSource::createMateria(std::string const &type)
@@ -68,9 +71,11 @@ AMateria* MateriaSource::createMateria(std::string const &type)
 	{
 		if (type == this->_Memory[i]->getType())
 		{	
+			std::cout << "\'* " << type << " Materia created from slot " << i << " *\'" << std::endl;
 			return(_Memory[i]->clone());
 		}
 	}
+	std::cout << "\'* " << type << " Materia not found in memory *\'" << std::endl;
 	return(NULL);
 }
 

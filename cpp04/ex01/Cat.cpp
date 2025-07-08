@@ -13,9 +13,6 @@ Cat::Cat(const Cat &other) : Animal(other)
 	std::cout << "Cat copy constructor called" << std::endl;
 	this->type = other.type;
 	brain = new Brain(*other.brain);
-	if (!brain) {
-		std::cerr << "Failed to allocate memory for brain in Cat copy constructor" << std::endl;
-	}
 }
 
 Cat Cat::operator=(const Cat &other) 
@@ -28,9 +25,6 @@ if (this != &other) {
 			delete brain;
 		}
 		brain = new Brain(*other.brain);
-		if (!brain) {
-			std::cerr << "Failed to allocate memory for brain in Cat assignment operator" << std::endl;
-		}
 	}
 	return *this;
 }
@@ -46,7 +40,57 @@ void Cat::makeSound() const
 	std::cout << "Meow!" << std::endl;
 }
 
-std::string Cat::getidea()
+std::string Cat::getfirstidea()
 {
-	return (this->brain->getidea());
+	return (this->brain->getfirstidea());
+}
+
+void Cat::setidea(const std::string &idea)
+{
+	this->brain->setidea(idea);
+}
+
+void Cat::setIdeaAtIndex(int index, const std::string &idea)
+{
+	this->brain->setIdeaAtIndex(index, idea);
+}
+
+std::string Cat::getIdeaAtIndex(int index) const
+{
+	return this->brain->getIdeaAtIndex(index);
+}
+
+std::string* Cat::getAllIdeas()
+{
+	return this->brain->getAllIdeas();
+}
+
+void Cat::printIdeas() const
+{
+	this->brain->printIdeas();
+}
+
+void Cat::clearIdeas()
+{
+	this->brain->clearIdeas();
+}
+
+int Cat::getNumberOfIdeas() const
+{
+	return this->brain->getNumberOfIdeas();
+}
+
+bool Cat::ideaExistsAtIndex(int index) const
+{
+	return this->brain->ideaExistsAtIndex(index);
+}
+
+bool Cat::isEmpty() const
+{
+	return this->brain->isEmpty();
+}
+
+int Cat::getMaxIdeas() const
+{
+	return this->brain->getMaxIdeas();
 }

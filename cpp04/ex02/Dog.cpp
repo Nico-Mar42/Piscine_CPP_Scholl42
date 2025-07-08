@@ -12,9 +12,6 @@ Dog::Dog(const Dog &other) : Animal(other)
 {
 	this->type = other.type;
 	brain = new Brain(*other.brain);
-	if (!brain) {
-		std::cerr << "Failed to allocate memory for brain in Dog copy constructor" << std::endl;
-	}
 	std::cout << "Dog copy constructor called" << std::endl;
 }
 
@@ -27,9 +24,6 @@ Dog Dog::operator=(const Dog &other)
 			delete brain;
 		}
 		brain = new Brain(*other.brain);
-		if (!brain) {
-			std::cerr << "Failed to allocate memory for brain in Dog assignment operator" << std::endl;
-		}
 	}
 	std::cout << "Dog assignment operator called" << std::endl;
 	return *this;

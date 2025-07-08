@@ -8,9 +8,21 @@ class Brain {
 		Brain();
 		Brain(const Brain &other);
 		Brain& operator=(const Brain &other);
-		std::string getidea();
 		virtual ~Brain();
-	protected:
+	
+		std::string getfirstidea();
+		void setidea(const std::string &idea);
+		void setIdeaAtIndex(int index, const std::string &idea);
+		std::string getIdeaAtIndex(int index) const;
+		std::string* getAllIdeas();
+		void printIdeas() const;
+		void clearIdeas();
+		int getNumberOfIdeas() const;
+		bool ideaExistsAtIndex(int index) const;
+		bool isEmpty() const;
+		int getMaxIdeas() const;
+		
+		protected:
 		std::string ideas[100];
 };
 

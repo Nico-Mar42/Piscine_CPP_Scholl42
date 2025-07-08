@@ -63,26 +63,26 @@ void Character::equip(AMateria* m)
 		if (this->_Inventory[i] == NULL)
 		{	
 			this->_Inventory[i] = m;
-			//std::cout << "\'* Materia equipped in slot " << i << " *\'" << std::endl;
+			std::cout << "\'* Materia equipped in slot " << i << " *\'" << std::endl;
 			return;
 		}
 	}
-	//std::cout << "\'* Inventory is full, cannot equip materia *\'" << std::endl;
+	std::cout << "\'* Inventory is full, cannot equip materia *\'" << std::endl;
 }
 
 void Character::unequip(int idx)
 {
 	if (idx > 3)
 	{
-		//std::cout << "\'* Slot "<< idx << " is out of range. Choose between 0 and 3 *\'" << std::endl;
+		std::cout << "\'* Slot "<< idx << " is out of range. Choose between 0 and 3 *\'" << std::endl;
 		return;
 	}
-	if (this->_Inventory[idx] != NULL) 
-		//std::cout << "\'* This slot is already empty *\'" << std::endl;
-	//else
+	if (this->_Inventory[idx] == NULL) 
+		std::cout << "\'* This slot is already empty *\'" << std::endl;
+	else
 	{
 		this->_Inventory[idx] = NULL;
-		//std::cout << "\'* This slot is empty now*\'" << std::endl;
+		std::cout << "\'* This slot is empty now*\'" << std::endl;
 	}
 	return;
 }
@@ -91,14 +91,14 @@ void Character::use(int idx, ICharacter& target)
 {
 	if (idx > 3)
 	{
-		//std::cout << "\'* Slot "<< idx << " is out of range. Choose between 0 and 3 *\'" << std::endl;
+		std::cout << "\'* Slot "<< idx << " is out of range. Choose between 0 and 3 *\'" << std::endl;
 		return;
 	}
-	if (this->_Inventory[idx] != NULL) 
-		//std::cout << "\'* This slot is already empty *\'" << std::endl;
-	//else
+	if (this->_Inventory[idx] == NULL) 
+		std::cout << "\'* This slot is already empty *\'" << std::endl;
+	else
 	{
-		//std::cout << "\' * " << this->_name << "use materia *\'";
+		std::cout << "\'* " << this->_name << " use materia *\'";
 		 _Inventory[idx]->use(target);
 	}
 	return;

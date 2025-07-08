@@ -32,7 +32,7 @@ Ice::~Ice()
 
 Ice *Ice::clone() const
 {
-	//std::cout << "Ice clone called" << std::endl;
+	std::cout << "\'* Ice clone called *\'" << std::endl;
 	return new Ice (*this);
 }
 

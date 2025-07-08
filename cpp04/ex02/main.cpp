@@ -5,19 +5,12 @@
 
 int main()
 {
-	Dog* Doug = new Dog();
-	Cat* Kitty = new Cat();
-	Dog* Doug2 = new Dog(*Doug);
-	Cat* Kitty2 = new Cat(*Kitty);
+	std::cout << "\033[32m--- Abstract Class Test ---\033[0m" << std::endl << std::endl;
+	// Uncommenting the following line will cause a compilation error
+	// because Animal is an abstract class and cannot be instantiated.
 
-	Doug->makeSound();
-	Kitty->makeSound();
-	Doug2->makeSound();
-	Kitty2->makeSound();
-	delete Doug;
-	delete Kitty;
-	delete Doug2;
-	delete Kitty2;
-	std::cout << "All animals deleted." << std::endl;
-	return 0;
+	//Animal* chat = new Cat(); // This line will cause a compilation error]"
+	Cat* cat = new Cat();
+	cat->makeSound();
+	
 }
