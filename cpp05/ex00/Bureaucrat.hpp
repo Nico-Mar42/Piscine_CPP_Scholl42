@@ -2,6 +2,8 @@
 
 #include <string>
 #include <exception>
+#include <iostream>
+#include <sstream>
 
 
 
@@ -9,24 +11,24 @@ class Bureaucrat
 {
 	public:
 		Bureaucrat();
-		Bureaucrat(std::string name, int rank);
+		Bureaucrat(const std::string name, int grade);
 		Bureaucrat(const Bureaucrat &other);
 		Bureaucrat &operator=(const Bureaucrat &other);
 		~Bureaucrat();
 
 		void incrementGrade();
 		void decrementGrade();
-		std::string getname();
-		int getgrade();
+		std::string const getName() const; 
+		int getGrade() const;
 
-		class GradeTooHighException
+		class GradeTooHighException : public std::exception
 		{
 			const char* what() const throw()
 			{
 				return "Grade is too high!";
 			}
 		};
-		class GradeTooLowException
+		class GradeTooLowException : public std::exception
 		{
 			const char* what() const throw()
 			{
@@ -36,7 +38,7 @@ class Bureaucrat
 	
 	private:
 		const std::string  _name;
-		int rank;
+		int _grade;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& Bureaucrat);

@@ -1,7 +1,70 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
+
+Bureaucrat::Bureaucrat() : _name("John Smith")
 {
-	std::string name = "John Smith";
-	this->_name = name; 
+	this->_grade = 150;
+}
+
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
+{
+	this->_grade = grade;
+	if (_grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	if (_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name)
+{
+	this->_grade = other._grade;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
+{
+	if (this != &other)
+	{
+		// _name is const, so we can't assign to it
+		this->_grade = other._grade;
+	}
+	return *this;
+}
+
+Bureaucrat::~Bureaucrat()
+{
+
+}
+
+void Bureaucrat::incrementGrade()
+{
+	this->_grade -= 1;
+	if (_grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	if (_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+}
+
+void Bureaucrat::decrementGrade()
+{
+	this->_grade += 1;
+	if (_grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	if (_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+}
+
+const std::string Bureaucrat::getName() const
+{
+	return (this->_name);
+}
+
+int Bureaucrat::getGrade() const
+{
+	return(this->_grade);
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat&  bureaucrat)
+{
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+    return os;
 }
