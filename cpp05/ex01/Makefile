@@ -1,10 +1,10 @@
 # Variables
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Bureaucraty
+NAME = Bureaucraty_0.1
 
 # Sources et objets
-SRC = main.cpp Bureaucrat.cpp 
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 
 # Règle par défaut
 all: $(NAME)
