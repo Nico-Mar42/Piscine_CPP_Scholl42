@@ -4,14 +4,21 @@ int main()
 {
 	std::cout << "\033[32mTest form with right grade\033[0m" << std::endl << std::endl;
 
-	Bureaucrat Henry("Henry McGalaghan", 78);
-	Form Bullshit("Hapiness Manager", 80, 80);
+	try
+	{
+		Bureaucrat Henry("Henry McGalaghan", 0);
+		Form Bullshit("Hapiness Manager", 80, 80);
 
-	std::cout << Henry << std::endl;
-	std::cout << Bullshit << std::endl;	
-	Henry.signForm(Bullshit);
-	std::cout << Bullshit << std::endl;	
-
+		std::cout << Henry << std::endl;
+		std::cout << Bullshit << std::endl;	
+		Henry.signForm(Bullshit);
+		std::cout << Bullshit << std::endl;	
+	}
+	catch (std::exception & e)
+	{
+		std::cout << "Erreur : " << e.what() << std::endl;
+	}
+	
 	std::cout << std::endl << "\033[32mTest form with Wrong grade\033[0m" << std::endl << std::endl;
 
 	try
