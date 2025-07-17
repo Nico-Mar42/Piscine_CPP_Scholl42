@@ -59,7 +59,7 @@ int AForm::getGradetoexec() const
 
 void AForm::beSigned(Bureaucrat &bureaucrat)
 {
-	if (bureaucrat.getGrade() >=  this->_grade_to_sign)
+	if (bureaucrat.getGrade() >  this->_grade_to_sign)
 	{
 		throw AForm::GradeTooLowException();
 		return;

@@ -6,7 +6,7 @@ int main()
 
 	try
 	{
-		Bureaucrat henry("Henry Mcgalaghan", 1);
+		Bureaucrat henry("Henry Mcgalaghan", 65);
 		std::cout << henry.getName() << std::endl;
 		std::cout << henry.getGrade() << std::endl;
 		std::cout << henry << std::endl; 

@@ -6,7 +6,7 @@ int main()
 
 	try
 	{
-		Bureaucrat Henry("Henry McGalaghan", 0);
+		Bureaucrat Henry("Henry McGalaghan", 80);
 		Form Bullshit("Hapiness Manager", 80, 80);
 
 		std::cout << Henry << std::endl;
