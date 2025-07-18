@@ -4,7 +4,7 @@ CFLAGS = -g -Wall -Wextra -Werror -std=c++98
 NAME = scalar_types
 
 # Sources et objets
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp ScalarConverter.cpp Convert_function.cpp \
 
 # Règle par défaut
 all: $(NAME)

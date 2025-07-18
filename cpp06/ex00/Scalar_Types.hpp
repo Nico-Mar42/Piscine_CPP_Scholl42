@@ -17,3 +17,12 @@
 # define NAN_TYPE 5
 # define INFF_TYPE 6
 
+int WhatType(const std::string &literal);
+void char_to_others(const std::string &literal);
+void int_to_others(const std::string &literal);
+void float_to_others(const std::string &literal);
+void Double_to_others(const std::string &literal);
+void other_type();
+void nan_type();
+void inf_type(const std::string &literal);
+
