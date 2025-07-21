@@ -13,6 +13,8 @@ int main()
 		std::cout << Bullshit << std::endl;	
 		Henry.signForm(Bullshit);
 		std::cout << Bullshit << std::endl;	
+		Henry.decrementGrade();
+		Henry.signForm(Bullshit);
 	}
 	catch (std::exception & e)
 	{

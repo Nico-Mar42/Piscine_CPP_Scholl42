@@ -3,6 +3,8 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include <iostream>
+#include <fstream>
+#include <string>
 
 int main()
 {
@@ -25,6 +27,22 @@ int main()
 		Bobby.signForm(Forester);
 		std::cout << "\033[32m" << Forester << "\033[0m" << std::endl;
 		Bobby.executeForm(Forester);
+
+		std::ifstream shrubberyFile("Forest_shrubbery");
+		if (shrubberyFile.is_open())
+		{
+			std::cout << "\033[36mContents of Forest_shrubbery:\033[0m" << std::endl;
+			std::string line;
+			while (std::getline(shrubberyFile, line))
+			{
+				std::cout << line << std::endl;
+			}
+			shrubberyFile.close();
+		}
+		else
+		{
+			std::cout << "Could not open Forest_shrubbery file." << std::endl;
+		}
 	}
 	catch(const std::exception& e)
 	{

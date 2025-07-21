@@ -56,11 +56,10 @@ int main()
 		Intern Liam;
 		AForm * Random;
 		Random = Liam.makeForm("RandomForm", "Steven Moffat");
-		std::cout << Random << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << " bonjour \n";
 	}
 	
 	return (1) ;

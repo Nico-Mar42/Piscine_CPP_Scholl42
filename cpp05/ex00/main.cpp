@@ -34,11 +34,11 @@ int main()
 
 	try
 	{
-		Bureaucrat Duke("Duke Johnson", 0);
+		Bureaucrat Duke("Duke Johnson", 1);
+		Duke.incrementGrade();
 	}
 	catch (std::exception & e)
 	{
 		std::cout << "Erreur : " << e.what() << std::endl;
 	}
-
 }
