@@ -65,7 +65,7 @@ void int_to_others(const std::string &literal)
 
 	double d = static_cast<double>(std::strtod(literal.c_str(), NULL));
 
-	std::cout << std::fixed << std::setprecision(1);
+	std::cout << std::fixed << std::setprecision(10);
 
 	if (i < 2147483647 && i > -2147483648 && isprint(i) != 0)
 		std::cout << "Char : " << c << std::endl;
@@ -77,9 +77,15 @@ void int_to_others(const std::string &literal)
 	else 
 		std::cout << "Int : Impossible" << std::endl;
 
-	std::cout << "Float : " << f << "f" << std::endl;
-	
-	std::cout << "Double : " << d << std::endl;
+	if (f <= FLT_MAX && f >= -FLT_MAX)
+		std::cout << "Float : " << f << "f" << std::endl;
+	else
+		std::cout << "Float : Impossible"  << std::endl;
+
+	if (d <= DBL_MAX && d >= -DBL_MAX)
+		std::cout << "Double : " << d << std::endl;
+	else
+		std::cout << "Double : Impossible" << std::endl;
 }
 
 void float_to_others(const std::string &literal)
@@ -89,24 +95,32 @@ void float_to_others(const std::string &literal)
 	int i = static_cast<int>(std::strtol(literal.c_str(), NULL, 10));
 
 	char c = static_cast<char>(f);
-
+	
 	double d = static_cast<double>(std::strtod(literal.c_str(), NULL));
 
-	std::cout << std::fixed << std::setprecision(1);
+	std::cout << literal << "	" <<  std::strtod(literal.c_str(), NULL) << std::endl;
+
+	std::cout << std::fixed << std::setprecision(10);
 
 	if (f < 2147483647.0f && f > -2147483648.0f && isprint(i) != 0)
 		std::cout << "Char : " << c << std::endl;
 	else
 		std::cout << "Char: Non displayable" << std::endl;
 
-	if (f < 2147483647.0f && f > -2147483648.0f)
+	if (f <= 2147483647.0f && f >= -2147483648.0f)
 		std::cout << "Int : " << i << std::endl;
 	else 
 		std::cout << "Int : Impossible" << std::endl;
 
-	std::cout << "Float : " << f << "f" << std::endl;
-	
-	std::cout << "Double : " << d << std::endl;
+	if (f <= FLT_MAX && f >= -FLT_MAX)
+		std::cout << "Float : " << f << "f" << std::endl;
+	else
+		std::cout << "Float : Impossible" << std::endl;
+
+	if (d <= DBL_MAX && d >= -DBL_MAX)
+		std::cout << "Double : " << d << std::endl;
+	else
+		std::cout << "Double : Impossible" << std::endl;
 }
 
 void Double_to_others(const std::string &literal)
@@ -119,26 +133,29 @@ void Double_to_others(const std::string &literal)
 
 	char c = static_cast<char>(d);
 
-	std::cout << std::fixed << std::setprecision(1);
+	std::cout << std::fixed << std::setprecision(10);
 
 	if (d < 2147483647.0 && d > -2147483648.0 && isprint(i) != 0)
 		std::cout << "Char : " << c << std::endl;
 	else
 		std::cout << "Char: Non displayable" << std::endl;
 
-	if (d < 2147483647.0f && d > -2147483648.0f)
+	if (d <= 2147483647.0f && d >= -2147483648.0f)
 		std::cout << "Int : " << i << std::endl;
 	else 
 		std::cout << "Int : Impossible" << std::endl;
 
-	std::cout << "Float : " << f << "f" << std::endl;
-	
-	std::cout << "Double : " << d << std::endl;
+	if (f <= FLT_MAX && f >= -FLT_MAX)
+		std::cout << "Float : " << f << "f" << std::endl;
+	else
+		std::cout << "Float : Impossible" << std::endl;
+		
+	if (d <= DBL_MAX && d >= -DBL_MAX)
+		std::cout << "Double : " << d << std::endl;
 }
 
 void other_type()
 {
-	
 	std::cout << "Char : Impossible" << std::endl;
 
 	std::cout << "Int : Impossible" << std::endl;
