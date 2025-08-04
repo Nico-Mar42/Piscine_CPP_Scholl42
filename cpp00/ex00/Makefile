@@ -1,5 +1,5 @@
 # Variables
-CC = c++
+CPP = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = megaphone
 
@@ -11,11 +11,11 @@ all: $(NAME)
 
 # Compilation des fichiers objets
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CPP) $(CFLAGS) -c $< -o $@
 
 # Création de l'exécutable
 $(NAME): $(SRC:.cpp=.o)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CPP) $(CFLAGS) -o $@ $^
 
 # Nettoyage
 clean:
