@@ -12,8 +12,8 @@
 #define CYAN    "\033[36m"
 #define WHITE   "\033[37m"
 
-template<typename T>
-void iter(T* array, size_t lengh, void (*f)(T&))
+template<typename T, typename F>
+void iter(T* array, size_t lengh, F f)
 {
 	for (size_t i = 0; i < lengh; i++)
 	{
