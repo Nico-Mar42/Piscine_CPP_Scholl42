@@ -1,7 +1,7 @@
 # Variables
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Iter
+NAME = Array
 
 # Sources et objets
 SRC = main.cpp \
