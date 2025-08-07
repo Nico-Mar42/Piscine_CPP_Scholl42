@@ -1,90 +1,65 @@
-#include "whatever.hpp"
+#include "easyfind.hpp"
 
 int main()
 {
-	int a = 0;
-	int b = 12;
+	std::cout << YELLOW << "Test my function Easyfind." << RESET << std::endl;
+	std::cout << YELLOW << "-------------------------." << RESET << std::endl << std::endl;
+ 
+	std::cout << MAGENTA << "Test With Vector." << RESET << std::endl << std::endl;
 
-	float c = 123;
-	float d = 1;
+	std::vector<int> numbers;
+	numbers.push_back(1);
+	numbers.push_back(2);
+	numbers.push_back(3);
+	numbers.push_back(4);
+	numbers.push_back(5);
+	numbers.push_back(6);
 
-	char e = 'a';
-	char f = 'z';
-
-	char* g = const_cast<char*>("test1");
-	char* h = const_cast<char*>("test2");
-
-	std::cout << YELLOW << "Swap Test\033[0m" << RESET << std::endl << std::endl;
-
-	std::cout << GREEN << "with int" << RESET << std::endl;
-	std::cout << BLUE << "Before swap A = " << a << " and B = " << b << RESET << std::endl;
-	swap<int>(a, b);
-	std::cout << RED << "After swap  A = " << a << " and B = " << b << RESET << std::endl << std::endl;
+	std::cout << BLUE << "Test numbers is in vector." << RESET << std::endl << std::endl;
 	
-	std::cout << GREEN << "with float" << RESET << std::endl;
-	std::cout << BLUE << "Before swap C = " << c << " and D = " << d << RESET << std::endl;
-	swap<float>(c, d);
-	std::cout << RED << "After swap  C = " << c << " and D = " << d << RESET << std::endl << std::endl;
-	
-	std::cout << GREEN << "with char" << RESET << std::endl;
-	std::cout << BLUE << "Before swap E = " << e << " and F = " << f << RESET << std::endl;
-	swap<char>(e, f);
-	std::cout << RED << "After swap  E = " << e << " and F = " << f << RESET << std::endl << std::endl;
-	
-	std::cout << GREEN << "with string" << RESET << std::endl;
-	std::cout << BLUE << "Before swap G = " << g << " and H = " << h << RESET <<std::endl;
-	swap(g, h);
-	std::cout << RED << "After swap  G = " << g << " and H = " << h << RESET << std::endl << std::endl;
+	if (easyfind(numbers, 4) != numbers.end())
+		std::cout << GREEN << 4 << " is in vector" << RESET << std::endl << std::endl;
+	else 
+		std::cout << RED << 4 << " isn't in vector" << RESET << std::endl << std::endl;
 
-	std::cout << YELLOW << "MIN Test\033[0m" << RESET << std::endl << std::endl;
+	std::cout << BLUE << "Test numbers isn't in vector." << RESET << std::endl << std::endl;
+	
+	if (easyfind(numbers, 10) != numbers.end())
+		std::cout << GREEN << 4 << " is in vector" << RESET << std::endl << std::endl;
+	else 
+		std::cout << RED << 4 << " isn't in vector" << RESET << std::endl << std::endl;
 
-	std::cout << GREEN << "with int" << RESET << std::endl;
-	std::cout << BLUE << "which is the smaller of A and B ?" << RESET << std::endl;
-	std::cout << MAGENTA << "knowing that A = " << a << " and B = " << b << std::endl;
-	std::cout << RED << "the smallest is " << min<int>(a, b) << RESET << std::endl << std::endl;
+	std::cout << MAGENTA << "Test With Deque." << RESET << std::endl << std::endl;
 	
-	std::cout << GREEN << "with float" << RESET << std::endl;
-	std::cout << BLUE << "which is the smaller of C and D ?" << RESET << std::endl;
-	std::cout << MAGENTA << "knowing that C = " << c << " and D = " << d << std::endl;
-	std::cout << RED << "the smallest is " << min<float>(c, d) << RESET << std::endl << std::endl;
-	
-	std::cout << GREEN << "with char" << RESET << std::endl;
-	std::cout << BLUE << "which is the smaller of E and F ?" << RESET << std::endl;
-	std::cout << MAGENTA << "knowing that E = " << e << " and F = " << f << std::endl;
-	std::cout << RED << "the smallest is " << min<char>(e, f) << RESET << std::endl << std::endl;
-	
-	std::cout << GREEN << "with string" << RESET << std::endl;
-	std::cout << BLUE << "which is the smaller of G and H ?" << RESET << std::endl;
-	std::cout << MAGENTA << "knowing that G = " << g << " and H = " << h << std::endl;
-	std::cout << RED << "the smallest is " << min(g, h) << RESET << std::endl << std::endl;
+	std::deque<int> deq;
+	deq.push_back(10);
+	deq.push_back(20);
+	deq.push_back(30);
+	deq.push_back(40);
+	deq.push_back(50);
 
-	std::cout << YELLOW << "MAX Test\033[0m" << RESET << std::endl << std::endl;
+	std::cout << BLUE << "Test numbers is in deque." << RESET << std::endl << std::endl;
 
-	std::cout << GREEN << "with int" << RESET << std::endl;
-	std::cout << BLUE << "which is the Bigger of A and B ?" << RESET << std::endl;
-	std::cout << MAGENTA << "knowing that A = " << a << " and B = " << b << std::endl;
-	std::cout << RED << "the smallest is " << max<int>(a, b) << RESET << std::endl << std::endl;
-	
-	std::cout << GREEN << "with float" << RESET << std::endl;
-	std::cout << BLUE << "which is the Bigger of C and D ?" << RESET << std::endl;
-	std::cout << MAGENTA << "knowing that C = " << c << " and D = " << d << std::endl;
-	std::cout << RED << "the smallest is " << max<float>(c, d) << RESET << std::endl << std::endl;
-	
-	std::cout << GREEN << "with char" << RESET << std::endl;
-	std::cout << BLUE << "which is the Bigger of E and F ?" << RESET << std::endl;
-	std::cout << MAGENTA << "knowing that E = " << e << " and F = " << f << std::endl;
-	std::cout << RED << "the smallest is " << max<char>(e, f) << RESET << std::endl << std::endl;
-	
-	std::cout << GREEN << "with string" << RESET << std::endl;
-	std::cout << BLUE << "which is the Bigger of G and H ?" << RESET << std::endl;
-	std::cout << MAGENTA << "knowing that G = " << g << " and H = " << h << std::endl;
-	std::cout << RED << "the smallest is " << max(g, h) << RESET << std::endl << std::endl;
+	if (easyfind(deq, 30) != deq.end())
+		std::cout << GREEN << 30 << " is in deque" << RESET << std::endl << std::endl;
+	else 
+		std::cout << RED << 30 << " isn't in deque" << RESET << std::endl << std::endl;
 
-	//std::cout << YELLOW << "WRONG Test\033[0m" << RESET << std::endl << std::endl;
+	std::cout << BLUE << "Test numbers isn't in deque." << RESET << std::endl << std::endl;
 
-	//std::cout << GREEN << "Try to swap an int and a float" << RESET << std::endl;
-	//std::cout << BLUE << "Before swap A = " << a << " and C = " << c << RESET << std::endl;
-	//swap<int>(a, c); //Uncommenting out the test makes compilation impossible because the type of the two variables are different
-	//std::cout << RED << "After swap  A = " << a << " and C = " << c << RESET << std::endl << std::endl;
+	if (easyfind(deq, 33) != deq.end())
+		std::cout << GREEN << 30 << " is in deque" << RESET << std::endl << std::endl;
+	else 
+		std::cout << RED << 30 << " isn't in deque" << RESET << std::endl << std::endl;
+
+	
+	// If you uncomment this part, the program does not compile.
+	//std::cout << MAGENTA << "Test with a non-container type." << RESET << std::endl << std::endl;
+
+	//int nbr = 12;
+	//if (easyfind(nbr, 12) != deq.end()) 
+	//	std::cout << GREEN << 30 << " is in deque" << RESET << std::endl << std::endl;
+	//else 
+	//	std::cout << RED << 30 << " isn't in deque" << RESET << std::endl << std::endl;
 
 }	
