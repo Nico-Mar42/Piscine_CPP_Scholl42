@@ -21,6 +21,40 @@ int main()
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	std::cout << MAGENTA << "Test with 20 numbers and span is full" << RESET << std::endl << std::endl;
+	try
+	{
+		Span sp = Span(20);
+		sp.addNumber(6);
+		sp.addNumber(33);
+		sp.addNumber(7);
+		sp.addNumber(0);
+		sp.addNumber(12);
+		sp.addNumber(18);
+		sp.addNumber(20);
+		sp.addNumber(7);
+		sp.addNumber(13);
+		sp.addNumber(10);
+		sp.addNumber(21);
+		sp.addNumber(34);
+		sp.addNumber(58);
+		sp.addNumber(29);
+		sp.addNumber(120);
+		sp.addNumber(184);
+		sp.addNumber(210);
+		sp.addNumber(70);
+		sp.addNumber(130);
+		sp.addNumber(101);
+
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl << std::endl;
+		sp.addNumber(103);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	
 	
 	std::cout << MAGENTA << "Test with 10 000 numbers" << RESET << std::endl << std::endl;

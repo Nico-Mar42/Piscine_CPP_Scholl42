@@ -1,7 +1,7 @@
 # Variables
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = swap_max_min
+NAME = easyfind
 
 # Sources et objets
 SRC = main.cpp \
