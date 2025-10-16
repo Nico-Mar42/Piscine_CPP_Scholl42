@@ -1,8 +1,4 @@
 #include "RPN.hpp"
-
-bool check_digit(std::string s);
-bool check_digit(std::string s);
-
 int main(int argc, char const *argv[])
 {
 	if (argc < 2){

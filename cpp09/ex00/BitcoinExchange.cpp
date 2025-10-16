@@ -3,8 +3,7 @@
 bool split_by_char(const std::string& line, std::string& date, std::string& value, char c);
 bool isValidDate(const std::string &date);
 bool check_history(std::string date, std::string value);
-
-
+bool is_empty(const std::string &s);
 
 std::map<std::string ,float> make_map(char const *data_name){
 	std::string in_file = data_name;
@@ -115,10 +114,25 @@ bool split_by_char(const std::string& line, std::string& date, std::string& valu
 	size_t pos = line.find(c);
 
 	if (pos != std::string::npos) {
-		date = line.substr(0, pos - 1);
+		if (pos <= 0){
+			std::cerr << RED << "Syntax Error in " << line << RESET<< std::endl << std::endl;
+			date = "";
+			value = "";
+			return false;
+		}
+		else
+			date = line.substr(0, pos - 1);
 
-		value = line.substr(pos + 2);
-	} else {
+		if ((pos + 1) >= line.size()){
+			std::cerr << RED << "Syntax Error in " << line << RESET<< std::endl << std::endl;
+			date = "";
+			value = "";
+			return false;
+		}
+		else
+			value = line.substr(pos + 2);
+	} 
+	else {
 		std::cerr << RED << "Error: delimiter " << c << " not found in the line." << RESET<< std::endl << std::endl;
 		date = "";
 		value = "";
@@ -127,10 +141,21 @@ bool split_by_char(const std::string& line, std::string& date, std::string& valu
 	if (c == '|'){
 		for (size_t i = 0; i < value.length(); i++) {
 			if (!isdigit(value[i]) && value[i] != '.' && value[i] != '-') {
-				std::cerr << RED << "Syntax Error in " << line << RESET<< std::endl << std::endl;
+				std::cerr << RED << "Syntax Error in  " << line << RESET<< std::endl << std::endl;
 				return false;
 			}
 		}
 	}
 	return true;
 }
+
+//bool is_empty(const std::string &s){
+//	if (s == NULL)
+
+//	for (std::string::const_iterator it = s.begin(); it < s.end(); it++)
+//	{
+//		if (!isspace(*it))
+//			return false;
+//	}
+//	return true;
+//}

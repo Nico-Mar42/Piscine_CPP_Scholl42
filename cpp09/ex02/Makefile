@@ -1,10 +1,10 @@
 # Variables
 CC = c++
 CFLAGS = -g -Wall -Wextra -Werror -std=c++98
-NAME = btc
+NAME = PmergeMe
 
 # Sources et objets
-SRC = main.cpp BitcoinExchange.cpp\
+SRC = main.cpp PmergeMe.cpp utils.cpp\
 
 # Règle par défaut
 all: $(NAME)

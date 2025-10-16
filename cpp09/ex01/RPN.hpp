@@ -25,9 +25,6 @@
 #define CYAN    "\033[36m"
 #define WHITE   "\033[37m"
 
-bool check_digit(std::string s);
-
-
 class RPN{
 	private:
 		std::stack<std::string> _Operation;
