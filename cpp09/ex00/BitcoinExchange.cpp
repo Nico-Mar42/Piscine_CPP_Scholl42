@@ -21,7 +21,7 @@ std::map<std::string ,float> make_map(char const *data_name){
 		std::string date;
 		std::string value;
 		split_by_char(line, date, value, ',');
-		data[date] = atof(value.c_str());
+		data[date] = std::atof(value.c_str());
 	}
 	return data;
 }
@@ -59,9 +59,9 @@ void print_rslt(std::map<std::string ,float> data, std::string histo){
 			
 			if (it == data.end() || it->first != date)
 				--it;
-			f_value = atof(value.c_str());
+			f_value = std::atof(value.c_str());
 			std::cout << GREEN << date << " => " << value << " = ";
-			std::cout << atof(value.c_str()) * it->second << RESET<< std::endl << std::endl;
+			std::cout << std::atof(value.c_str()) * it->second << RESET<< std::endl << std::endl;
 		}
 	}
 }
@@ -76,7 +76,7 @@ bool check_history(std::string date, std::string value){
 		std::cerr << RED << "This date: " << date <<" is earlier than the creation of Bitcoin" << RESET <<std::endl;
 		return false;
 	}
-	if(atof(value.c_str()) < 0 || atof(value.c_str()) > 1000){
+	if(std::atof(value.c_str()) < 0 || std::atof(value.c_str()) > 1000){
 		std::cerr << RED << "Incorrect Bitcoin amount: " << value << RESET<< std::endl << std::endl;
 		return false;
 	}
@@ -85,7 +85,7 @@ bool check_history(std::string date, std::string value){
 
 bool isValidDate(const std::string &date)
 {
-    if (date.length() != 10 || date[4] != '-' || date[7] != '-'){
+    if (date.length() != 11 || date[4] != '-' || date[7] != '-'){
         return false;}
 
     int year = std::atoi(date.substr(0, 4).c_str());
@@ -115,22 +115,25 @@ bool split_by_char(const std::string& line, std::string& date, std::string& valu
 
 	if (pos != std::string::npos) {
 		if (pos <= 0){
-			std::cerr << RED << "Syntax Error in " << line << RESET<< std::endl << std::endl;
+			std::cerr << RED << "Syntax Error in 1" << line << RESET<< std::endl << std::endl;
 			date = "";
 			value = "";
 			return false;
 		}
 		else
-			date = line.substr(0, pos - 1);
+			date = line.substr(0, pos);
 
 		if ((pos + 1) >= line.size()){
-			std::cerr << RED << "Syntax Error in " << line << RESET<< std::endl << std::endl;
+			std::cerr << RED << "Syntax Error in 1" << line << RESET<< std::endl << std::endl;
 			date = "";
 			value = "";
 			return false;
 		}
-		else
-			value = line.substr(pos + 2);
+		else{
+		//std::cout << CYAN << "value = " << line.substr(pos + 1) << RESET << std::endl;
+
+			value = line.substr(pos + 1);}
+
 	} 
 	else {
 		std::cerr << RED << "Error: delimiter " << c << " not found in the line." << RESET<< std::endl << std::endl;
@@ -140,8 +143,9 @@ bool split_by_char(const std::string& line, std::string& date, std::string& valu
 	}
 	if (c == '|'){
 		for (size_t i = 0; i < value.length(); i++) {
-			if (!isdigit(value[i]) && value[i] != '.' && value[i] != '-') {
-				std::cerr << RED << "Syntax Error in  " << line << RESET<< std::endl << std::endl;
+			if (!isdigit(value[i]) && value[i] != '.' && value[i] != '-' && value[i] != ' ') {
+				
+				std::cerr << RED << "Syntax Error in  " << value[i] << line << RESET<< std::endl << std::endl;
 				return false;
 			}
 		}
